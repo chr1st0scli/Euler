@@ -100,24 +100,9 @@ let nos = "37107287533902102798797998220837590246510135740250
 20849603980134001723930671666823555245252804609722
 53503534226472524250874054075591789781264330331690"
 
-let vertSums =
-    //Transform to an array of 100 arrays of 50 digits each.
-    nos.Split([|"\r\n"|], System.StringSplitOptions.None)   //F# interactive requires \n instead of \r\n!!!
-    |> Array.map (fun str -> str.ToCharArray() |> Array.map (fun c -> int (c.ToString())))
-    //Add them vertically.
-    |> Array.reduce (fun arr1 arr2 -> Array.zip arr1 arr2 |> Array.map (fun t -> fst t + snd t))
-
-let sumNCarry no acc = 
-    let str = acc.ToString()
-    no + (if str.Length > 1 then int (str.Substring(0, str.Length - 1)) else acc)
-
 //5537376230
 printfn "%s"
-    ((Array.scanBack sumNCarry vertSums 0 |> Array.mapi (
-        //Keep only the right most digit of the intermediate results since the leftmost was carried.
-        fun i no -> 
-            let str = no.ToString()
-            if i = 0 || str.Length = 1 then str
-            else str.Substring(str.Length - 1, 1))
-    |> Array.reduce (+)).Substring(0, 10))
+    ((nos.Split([|"\r\n"|], System.StringSplitOptions.None) //F# interactive requires \n instead of \r\n!!!
+    |> Seq.map bigint.Parse
+    |> Seq.reduce (+)).ToString().Substring(0, 10))
 System.Console.ReadKey() |>ignore

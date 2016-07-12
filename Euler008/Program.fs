@@ -20,14 +20,14 @@ let strList = "73167176531330624919225119674426574742355349194934\
 05886116467109405077541002256983155200055935729725\
 71636269561882670428252483600823257530420752963450"
 
-let intArr = Array.map (fun c -> uint64 (c.ToString())) (strList.ToCharArray())
+let noSeq = strList |> Seq.map string |> Seq.map uint64
 
 let maxProdOf cons=
-    intArr
-    |> Array.mapi (fun i el -> 
-        if i + cons >= intArr.Length + 1 then 0UL
-        else intArr |> Seq.skip i |> Seq.take cons |> Seq.reduce (*))
-    |> Array.max
+    noSeq
+    |> Seq.mapi (fun i el -> 
+        if i + cons >= Seq.length noSeq + 1 then 0UL
+        else noSeq |> Seq.skip i |> Seq.take cons |> Seq.reduce (*))
+    |> Seq.max
 
 //23514624000
 printfn "%d" (maxProdOf 13)
