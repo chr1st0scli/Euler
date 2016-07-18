@@ -2,20 +2,9 @@
 //What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
 
 let isDivisableByAll num (divisors: int[]) = Array.forall (fun div -> num % div = 0) divisors
-let divs = [|1..20|]
-let answer = { 1..400000000 } 
-            |> Seq.tryFind (fun el -> isDivisableByAll el divs)
+let divs = [|2..20|]
 
+//It's worth noting that if this is implemented as a tail recursive function, it's 3 times faster.
 //232792560
-printfn "%d" answer.Value
+printfn "%d" ({ 1..400000000 } |> Seq.tryFind (fun el -> isDivisableByAll el divs)).Value
 System.Console.ReadKey() |>ignore
-
-(*
-//Method 2, tail recursion is 3 times faster.
-let minNumDividedBy (divisors: int[]) =  
-    let rec minNumDividedByAll stopAt acc = 
-        if acc >= stopAt then 0
-        else if isDivisableByAll acc divisors then acc
-        else minNumDividedByAll stopAt (acc + 1)
-    minNumDividedByAll 400000000 1
-*)
