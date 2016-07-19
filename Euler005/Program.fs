@@ -1,10 +1,14 @@
 ﻿//2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
 //What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
 
-let isDivisableByAll num (divisors: int[]) = Array.forall (fun div -> num % div = 0) divisors
 let divs = [|2..20|]
+let divisibleByAll num = Array.forall (fun div -> num % div = 0) divs
+let work = 
+    Async.Parallel [    //Split the set 1 to 400000000 into chunks to search in parallel.
+        let threads, cnt = 8, 400000000 / 8 //Number of threads, length of chunks.
+        for i in 0..threads - 1 ->
+            async { return seq {i * cnt + 1..(i + 1) * cnt} |> Seq.tryFind divisibleByAll }]
 
-//It's worth noting that if this is implemented as a tail recursive function, it's 3 times faster.
 //232792560
-printfn "%d" ({ 1..400000000 } |> Seq.tryFind (fun el -> isDivisableByAll el divs)).Value
-System.Console.ReadKey() |>ignore
+printfn "%d" (work |> Async.RunSynchronously |> Array.find Option.isSome).Value
+System.Console.ReadKey() |> ignore

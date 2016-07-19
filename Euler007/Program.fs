@@ -9,7 +9,8 @@ let isPrime num =
     isPrimeFn 2
 
 //104743
-printfn "%d" (Seq.initInfinite (fun i -> i + 1) 
-    |> Seq.where isPrime 
-    |> Seq.item 10000)
-System.Console.ReadKey() |>ignore
+Seq.initInfinite (fun i -> i + 1) 
+|> Seq.where isPrime 
+|> Seq.item 10000
+|> printfn "%d"
+System.Console.ReadKey() |> ignore

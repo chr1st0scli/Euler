@@ -17,4 +17,4 @@ let maxPrimeFactorOf num =
  
 //6857
 printfn "%d" (maxPrimeFactorOf 600851475143UL)
-System.Console.ReadKey() |>ignore
+System.Console.ReadKey() |> ignore

@@ -5,13 +5,11 @@ let isPalindrome num =
     let list = List.ofSeq (num.ToString())
     list = List.rev list
 
-let answer = seq {
+//906609
+seq {
     for x in 100..999 do
         for y in 100..999 do
             let prod = x * y
             if isPalindrome prod then yield prod
-                } |> Seq.max
-
-//906609
-printfn "%d" answer
-System.Console.ReadKey() |>ignore
+} |> Seq.max |> printfn "%d"
+System.Console.ReadKey() |> ignore

@@ -3,10 +3,9 @@
 //and the sum of the digits in the number 10! is 3 + 6 + 2 + 8 + 8 + 0 + 0 = 27.
 //Find the sum of the digits in the number 100!
 
-let rec factorial n =
-    if n = 1I then 1I
-    else n * factorial (n - 1I)
-
 //648
-printfn "%d" ((factorial 100I).ToString() |> Seq.map (string >> int) |> Seq.reduce (+))
-System.Console.ReadKey() |>ignore
+{1I..100I}
+|> Seq.reduce (*)
+|> string |> Seq.map (string >> int) |> Seq.reduce (+)
+|> printfn "%d"
+System.Console.ReadKey() |> ignore

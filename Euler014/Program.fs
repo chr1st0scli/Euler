@@ -19,9 +19,9 @@ let countCollatz n =
     countCollatz n 1
 
 //837799
-printfn "%d"
-    ({1000000..-1..500000}
-    |> Seq.map (fun i -> (i, countCollatz (uint64 i)))
-    |> Seq.maxBy (fun t -> snd t)
-    |> fst)
-System.Console.ReadKey() |>ignore
+{1000000..-1..500000}
+|> Seq.map (fun i -> (i, countCollatz (uint64 i)))
+|> Seq.maxBy (fun t -> snd t)
+|> fst
+|> printfn "%d"
+System.Console.ReadKey() |> ignore

@@ -12,4 +12,4 @@ let squareOfSums nums =
 let nums = [|1..100|]
 //25164150
 printfn "%d" (squareOfSums nums - sumOfSquares nums)
-System.Console.ReadKey() |>ignore
+System.Console.ReadKey() |> ignore

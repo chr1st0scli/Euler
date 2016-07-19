@@ -101,8 +101,8 @@ let nos = "37107287533902102798797998220837590246510135740250
 53503534226472524250874054075591789781264330331690"
 
 //5537376230
-printfn "%s"
-    ((nos.Split([|"\r\n"|], System.StringSplitOptions.None) //F# interactive requires \n instead of \r\n!!!
-    |> Seq.map bigint.Parse
-    |> Seq.reduce (+)).ToString().Substring(0, 10))
-System.Console.ReadKey() |>ignore
+(nos.Split([|"\r\n"|], System.StringSplitOptions.None) //F# interactive requires \n instead of \r\n!!!
+|> Seq.map bigint.Parse
+|> Seq.reduce (+)).ToString().Substring(0, 10)
+|> printfn "%s"
+System.Console.ReadKey() |> ignore

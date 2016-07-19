@@ -16,7 +16,8 @@ let eratosthOpt n = //Eratosthenes' optimized sieve
     f 2 0
 
 //142913828922
-printfn "%d" (eratosthOpt 2000000
-    |> Array.mapi (fun i el -> if el then uint64(i) else 0UL)
-    |> Array.sum)
-System.Console.ReadKey() |>ignore
+eratosthOpt 2000000
+|> Array.mapi (fun i el -> if el then uint64(i) else 0UL)
+|> Array.sum
+|> printfn "%d"
+System.Console.ReadKey() |> ignore

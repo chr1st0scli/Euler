@@ -2,5 +2,5 @@
 //What is the sum of the digits of the number 2^1000?
 
 //1366
-printfn "%d" ((bigint (2.0 ** 1000.0)).ToString() |> Seq.map string |> Seq.map int |> Seq.reduce (+))
-System.Console.ReadKey() |>ignore
+(bigint (2.0 ** 1000.0)).ToString() |> Seq.map (string >> int) |> Seq.reduce (+) |> printfn "%d"
+System.Console.ReadKey() |> ignore

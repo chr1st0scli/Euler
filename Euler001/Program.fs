@@ -26,4 +26,4 @@ let f3 =
 
 //233168
 printfn "%d %d %d" (f1 1) (f2 1 0) f3
-System.Console.ReadKey() |>ignore
+System.Console.ReadKey() |> ignore

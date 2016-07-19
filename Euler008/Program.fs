@@ -31,4 +31,4 @@ let maxProdOf cons=
 
 //23514624000
 printfn "%d" (maxProdOf 13)
-System.Console.ReadKey() |>ignore
+System.Console.ReadKey() |> ignore

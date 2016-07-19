@@ -11,8 +11,8 @@ let mult100 = oneTo9 |> List.map (fun i -> i + " hundred")
 let hndrN1To999 = [for x in mult100 do for y in oneTo99 -> x + " and " + y]
 
 //21124
-printfn "%d" 
-    ("one thousand" :: oneTo99 @ mult100 @ hndrN1To999
-    |> List.map (fun str -> str.Replace(" ", "").Length)
-    |> List.reduce (+))
+"one thousand" :: oneTo99 @ mult100 @ hndrN1To999
+|> List.map (fun str -> str.Replace(" ", "").Length)
+|> List.reduce (+)
+|> printfn "%d" 
 System.Console.ReadKey() |> ignore

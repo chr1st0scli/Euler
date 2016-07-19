@@ -9,10 +9,10 @@ let ami a =
     if a <> b && d b = a then Some b else None
 
 //31626
-printfn "%d"
-    ({1..10000}
-    |> Seq.fold (fun acc el -> 
-        match ami el with
-        | Some x -> acc + x
-        | None -> acc) 0)
+{1..10000}
+|> Seq.fold (fun acc el -> 
+    match ami el with
+    | Some x -> acc + x
+    | None -> acc) 0
+|> printfn "%d"
 System.Console.ReadKey() |> ignore

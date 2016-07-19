@@ -15,4 +15,4 @@ let bc = seq {
 
 //31875000
 printfn "%d" ((1000 - fst bc.Value - snd bc.Value) * fst bc.Value * snd bc.Value)
-System.Console.ReadKey() |>ignore
+System.Console.ReadKey() |> ignore

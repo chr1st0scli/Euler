@@ -19,18 +19,17 @@ let febDays year =
 let monthlyDays year = [31; febDays year; 31; 30; 31; 30; 31; 31; 30; 31; 30; 31]
 
 //171
-printfn "%d"
-    ({1900..2000}
-    |> Seq.fold (fun acc y -> 
-        let rec countSun l currAcc = 
-            if List.isEmpty l then currAcc
-            else
-                let monthDay1 = 
-                    match fst currAcc + l.Head % 7 with
-                    | x when x > 7 -> x - 7
-                    | x -> x
-                if monthDay1 = 7 && y >= 1901 then countSun l.Tail (monthDay1, 1 + snd currAcc)
-                else countSun l.Tail (monthDay1, snd currAcc)
-        countSun (monthlyDays y) acc) (1, 0) //1 is Monday, 0 is the no of Sundays 
-    |> snd)
+{1900..2000}
+|> Seq.fold (fun acc y -> 
+    let rec countSun l currAcc = 
+        if List.isEmpty l then currAcc
+        else
+            let monthDay1 = 
+                match fst currAcc + l.Head % 7 with
+                | x when x > 7 -> x - 7
+                | x -> x
+            if monthDay1 = 7 && y >= 1901 then countSun l.Tail (monthDay1, 1 + snd currAcc)
+            else countSun l.Tail (monthDay1, snd currAcc)
+    countSun (monthlyDays y) acc) (1, 0) //1 is Monday, 0 is the no of Sundays 
+|> (snd >> printfn "%d")
 System.Console.ReadKey() |> ignore

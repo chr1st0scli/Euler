@@ -34,8 +34,8 @@ let branchSums i =
     f (List.rev tri) i 0   //triangle is upside down because the operation is applied in a bottom-up fashion
 
 //1074
-printfn "%d"
-    ([0..(Seq.last tri).Length - 1]
-    |> List.map (branchSums >> List.max)
-    |> List.max)
+[0..(Seq.last tri).Length - 1]
+|> List.map (branchSums >> List.max)
+|> List.max
+|> printfn "%d"
 System.Console.ReadKey() |> ignore

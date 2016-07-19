@@ -22,9 +22,8 @@ let noOfDivs n =
     count 1 0
 
 //76576500
-printfn "%d"
-    (let rec tri n acc =
-        if noOfDivs acc > 500 then acc
-        else tri (n + 1) (n + acc)
-    tri 1 0)
-System.Console.ReadKey() |>ignore
+let rec tri n acc =
+    if noOfDivs acc > 500 then acc
+    else tri (n + 1) (n + acc)
+tri 1 0 |> printfn "%d"
+System.Console.ReadKey() |> ignore

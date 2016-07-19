@@ -8,4 +8,4 @@ let rec fib n1 n2 acc =
 
 //4613732
 printfn "%d" (fib 0 1 0)
-System.Console.ReadKey() |>ignore
+System.Console.ReadKey() |> ignore

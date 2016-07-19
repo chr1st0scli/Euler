@@ -9,8 +9,8 @@
 //Without bigint, we can't get factorial 40 due to value wrapping.
 let rec factorial n =
     if n = 1I then n
-    else n * (factorial (n - 1I))
+    else n * factorial (n - 1I)
 
 //137846528820
-printfn "%d" (uint64 (factorial 40I / (factorial 20I * factorial 20I)))
-System.Console.ReadKey() |>ignore
+factorial 40I / (factorial 20I * factorial 20I) |> uint64 |> printfn "%d"
+System.Console.ReadKey() |> ignore

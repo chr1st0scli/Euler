@@ -55,4 +55,4 @@ let diagMaxProd1 = matrix |> diagMatrix |> List.map max4Prod |> List.max
 let diagMaxProd2 = matrix |> Array.map Array.rev |> diagMatrix |> List.map max4Prod |> List.max
 //70600674
 printfn "%d" (Array.max [|horizMaxProd; vertiMaxProd; diagMaxProd1; diagMaxProd2|])
-System.Console.ReadKey() |>ignore
+System.Console.ReadKey() |> ignore
