@@ -1,4 +1,5 @@
 ﻿//Add all the natural numbers below one thousand that are multiples of 3 or 5.
+//This is the only problem solved in different ways for educational purposes.
 
 //Method 1. Increasing the stack frame.
 let rec f1 n =
@@ -13,7 +14,7 @@ let rec f1 n =
 let rec f2 n acc = 
     if n >= 1000 then
         acc
-    else if n % 3 = 0 || n % 5 = 0 then 
+    elif n % 3 = 0 || n % 5 = 0 then 
         f2 (n + 1) (acc + n)
     else 
         f2 (n + 1) acc

@@ -6,7 +6,7 @@ let isPrime num =
     else { 2UL..num - 1UL } |> Seq.forall (fun el -> num % el <> 0UL)
 
 let maxPrimeFactorOf num = 
-    let rec findMaxPrimeFactor (num:uint64) (primeFact:uint64) = 
+    let rec findMaxPrimeFactor num primeFact = 
         if isPrime primeFact && num % primeFact = 0UL then
             let res = num / primeFact
             printfn "%d / %d = %d" num primeFact res

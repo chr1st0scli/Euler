@@ -36,6 +36,5 @@ let branchSums i =
 //1074
 [0..(Seq.last tri).Length - 1]
 |> List.map (branchSums >> List.max)
-|> List.max
-|> printfn "%d"
+|> (List.max >> printfn "%d")
 System.Console.ReadKey() |> ignore

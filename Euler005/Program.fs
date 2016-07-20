@@ -5,8 +5,8 @@ let divs = [|2..20|]
 let divisibleByAll num = Array.forall (fun div -> num % div = 0) divs
 let work = 
     Async.Parallel [    //Split the set 1 to 400000000 into chunks to search in parallel.
-        let threads, cnt = 8, 400000000 / 8 //Number of threads, length of chunks.
-        for i in 0..threads - 1 ->
+        let cnt = 400000000 / System.Environment.ProcessorCount
+        for i in 0..System.Environment.ProcessorCount - 1 ->
             async { return seq {i * cnt + 1..(i + 1) * cnt} |> Seq.tryFind divisibleByAll }]
 
 //232792560

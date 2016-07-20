@@ -6,7 +6,6 @@
 //is found by the "central binomial coefficient" which is (2n)!/(n!)^2.
 //It's called central because it consists of the central numbers in Pascal's triangle.
 
-//Without bigint, we can't get factorial 40 due to value wrapping.
 let rec factorial n =
     if n = 1I then n
     else n * factorial (n - 1I)

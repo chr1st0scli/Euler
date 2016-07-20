@@ -7,9 +7,7 @@
 //Which starting number, under one million, produces the longest chain?
 //NOTE: Once the chain starts the terms are allowed to go above one million.
 
-//If unsigned long wasn't used for n, we would get wrap around effects.
 let (|Odd|Even|) n = if n % 2UL = 0UL then Even else Odd
-//If this wasn't tail recursive, we would get StackOverflowException trying to get the answer.
 let countCollatz n =
     let rec countCollatz n cnt =
         match n with
@@ -22,6 +20,5 @@ let countCollatz n =
 {1000000..-1..500000}
 |> Seq.map (fun i -> (i, countCollatz (uint64 i)))
 |> Seq.maxBy (fun t -> snd t)
-|> fst
-|> printfn "%d"
+|> (fst >> printfn "%d")
 System.Console.ReadKey() |> ignore
