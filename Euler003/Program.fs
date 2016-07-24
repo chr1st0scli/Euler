@@ -6,15 +6,14 @@ let isPrime num =
     else { 2UL..num - 1UL } |> Seq.forall (fun el -> num % el <> 0UL)
 
 let maxPrimeFactorOf num = 
-    let rec findMaxPrimeFactor num primeFact = 
+    let rec f num primeFact = 
         if isPrime primeFact && num % primeFact = 0UL then
             let res = num / primeFact
-            printfn "%d / %d = %d" num primeFact res
             if isPrime res then res
-            else findMaxPrimeFactor res 2UL
-        else findMaxPrimeFactor num (primeFact + 1UL)
-    findMaxPrimeFactor num 1UL
- 
+            else f res 2UL
+        else f num (primeFact + 1UL)
+    f num 1UL
+
 //6857
 printfn "%d" (maxPrimeFactorOf 600851475143UL)
 System.Console.ReadKey() |> ignore
